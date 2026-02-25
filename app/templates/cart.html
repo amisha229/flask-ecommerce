@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Your Cart{% endblock %}
+{% block content %}
+<h1>Shopping Cart</h1>
+{% if cart %}
+<table class="cart-table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>${{ "%.2f"|format(item.price) }}</td>
+            <td>
+                <form action="{{ url_for('cart.update_quantity', product_id=item.id) }}" method="post" class="quantity-form">
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="0" class="quantity-input">
+                    <button type="submit" class="btn btn-secondary">Update</button>
+                </form>
+            </td>
+            <td>${{ "%.2f"|format(item.price * item.quantity) }}</td>
+            <td><a href="{{ url_for('cart.remove_from_cart', product_id=item.id) }}" class="btn btn-danger">Remove</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="cart-total">
+    Total: ${{ "%.2f"|format(total) }}
+</div>
+<a href="{{ url_for('cart.checkout') }}" class="btn">Proceed to Checkout</a>
+{% else %}
+<p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}

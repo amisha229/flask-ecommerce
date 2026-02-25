@@ -1,0 +1,7 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+PyMySQL==1.0.3                # for MySQL connectivity
+Werkzeug==2.3.7                # for password hashing
+python-dotenv==1.0.0           # to manage environment variables
+cryptography==41.0.7
+gunicorn==20.1.0

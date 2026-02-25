@@ -1,0 +1,38 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Flask / environment
+.env
+.flaskenv
+instance/
+.webassets-cache
+
+# Docker
+.dockerignore
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Kubernetes secrets (don't commit)
+**/secret.yaml
+**/secrets.yaml
+
+# Local MySQL data (if using Docker volumes)
+data/
